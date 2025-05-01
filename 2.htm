@@ -37,7 +37,6 @@
       font-weight: bold;
       text-shadow: 2px 2px 5px #000, 0 0 10px #ff0066, 0 0 20px #ff0066, 0 0 30px #ff0066; /* Glow + Shadow */
       opacity: 0; /* Start hidden */
-      animation: none; /* No animation initially */
     }
 
     /* Animation to rise up the sentences */
@@ -121,13 +120,13 @@
     const display = document.getElementById("textDisplay");
 
     function updateText() {
-      // Reset animation by removing and re-adding the animation class
-      display.style.animation = 'none';
-      void display.offsetWidth; // trigger reflow to restart animation
-      display.style.animation = 'riseUp 1s forwards';
-      
-      // Update the text
       display.innerHTML = sentences[index];
+      display.style.opacity = 0; // Make text invisible initially
+      // Reset animation to trigger it again
+      display.style.animation = 'none';
+      // Force reflow to restart the animation
+      void display.offsetWidth;
+      display.style.animation = 'riseUp 1s forwards'; // Re-apply animation
     }
 
     function nextSentence() {
