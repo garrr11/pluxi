@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Always Be Happy</title>
+  <title>Happy Birthday Pluxi!</title>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet"> <!-- Cursive Font -->
   <style>
     html, body {
@@ -36,17 +36,19 @@
       font-size: 28px;
       font-weight: bold;
       text-shadow: 2px 2px 5px #000, 0 0 10px #ff0066, 0 0 20px #ff0066, 0 0 30px #ff0066; /* Glow + Shadow */
-      animation: fadeInUp 1s ease;
+      opacity: 0; /* Start hidden */
+      animation: riseUp 1s forwards; /* Animation applied */
     }
 
-    @keyframes fadeInUp {
-      from {
+    /* Animation to rise up the sentences */
+    @keyframes riseUp {
+      0% {
         opacity: 0;
-        transform: translate(-50%, 30%);
+        transform: translate(-50%, 30%); /* Start below */
       }
-      to {
+      100% {
         opacity: 1;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%); /* Move to the center */
       }
     }
 
