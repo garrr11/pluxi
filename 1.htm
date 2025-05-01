@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Pluxi!</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      color: #00ccff;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: url('back.gif') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .birthday-text {
+      font-size: 30px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+      z-index: 1;
+      max-width: 90%;
+      line-height: 1.6;
+      text-shadow: 2px 2px 4px #000, 0 0 10px #0000ff;
+      animation: bounce 2s infinite ease-in-out;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .birthday-text a {
+      color: red;
+      text-decoration: none;
+      font-weight: bold;
+      animation: glow 1.5s ease-in-out infinite alternate;
+    }
+
+    .birthday-text a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px red, 0 0 10px red, 0 0 15px orange;
+      }
+      to {
+        text-shadow: 0 0 10px yellow, 0 0 20px red, 0 0 30px orange;
+      }
+    }
+
+    img {
+      max-height: 400px;
+      width: auto;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="birthday-text">
+    Happy Birthday pluxi! <br>
+    Click <a href="2.htm">ME</a> to go to the next page!
+  </div>
+  <img src="hb.png" alt="Birthday Image">
+</body>
+</html>

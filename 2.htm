@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Always Be Happy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet"> <!-- Cursive Font -->
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      font-family: "Dancing Script", cursive;
+      color: white;
+    }
+
+    /* Video Background */
+    video#bgVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      max-width: 80%;
+      font-size: 28px;
+      font-weight: bold;
+      text-shadow: 2px 2px 5px #000, 0 0 10px #ff0066, 0 0 20px #ff0066, 0 0 30px #ff0066; /* Glow + Shadow */
+      animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translate(-50%, 30%);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .controls {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 20px;
+    }
+
+    .controls button {
+      background: rgba(0,0,0,0.6);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: background 0.3s;
+    }
+
+    .controls button:hover {
+      background: rgba(255,255,255,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Video Background -->
+  <video id="bgVideo" autoplay muted loop playsinline>
+    <source src="back1.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Autoplay Audio -->
+  <audio autoplay loop>
+    <source src="ok.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Sentence Display -->
+  <div class="content" id="textDisplay"></div>
+
+  <!-- Controls -->
+  <div class="controls">
+    <button onclick="prevSentence()">←</button>
+    <button onclick="nextSentence()">→</button>
+  </div>
+
+  <script>
+    const sentences = [
+      "HAII PLUXI",
+      "HAPPY BIRTHDAYYY",
+      "I hope you enjoy your day today!",
+      "Is okay to be sad sometimes",
+      "But being sad doesn't mean you should stay like that forever.",
+      "You should move forward after you calm yourself down",
+      "And always be positive.",
+      "You can always speak up for yourself",
+      "When you're feeling down or depressing.",
+      "You know we're always here",
+      "So DON'T WORRY that",
+      "You thought you're disturbing us but actually you're NOT disturbing us.",
+      "ANYWAYSS hope you have a great day pluxii ^-^"
+    ];
+
+    let index = 0;
+    const display = document.getElementById("textDisplay");
+
+    function updateText() {
+      display.classList.remove("fade");
+      void display.offsetWidth; // force reflow for animation
+      display.innerHTML = sentences[index];
+      display.classList.add("fade");
+    }
+
+    function nextSentence() {
+      if (index < sentences.length - 1) {
+        index++;
+        updateText();
+      }
+    }
+
+    function prevSentence() {
+      if (index > 0) {
+        index--;
+        updateText();
+      }
+    }
+
+    // Keyboard arrow support
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") nextSentence();
+      if (e.key === "ArrowLeft") prevSentence();
+    });
+
+    // Initialize
+    updateText();
+  </script>
+
+</body>
+</html>
